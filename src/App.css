@@ -1,0 +1,56 @@
+/* -------------- GENERAL ------------- */
+:root {
+  --main-color: rgb(195, 132, 14);
+}
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+h1 {
+  font-size: 34px;
+  text-align: center;
+  margin: 40px 0;
+}
+/* ----------------------------------- */
+/* -------------- HEADER ------------- */
+/* ----------------------------------- */
+header {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  height: 80px;
+  padding-left: 40px;
+  border-bottom: 1px solid lightgray;
+}
+header p {
+  font-size: 30px;
+}
+/* ----------------------------------- */
+/* --------------- MAIN -------------- */
+/* ----------------------------------- */
+.nav p {
+  font-size: 24px;
+  text-decoration: none;
+  color: black;
+}
+main {
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 100px;
+}
+
+/* ----------------------------------- */
+/* -------------- FOOTER ------------- */
+/* ----------------------------------- */
+footer {
+  padding: 30px;
+  background-color: whitesmoke;
+  margin-top: 40px;
+  text-align: center;
+}
+
+footer a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}

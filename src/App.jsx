@@ -3,21 +3,20 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Pages
 import Home from "./page/Home";
+import Details from "./page/Details";
 
 // Components
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Menu from "./components/Menu";
 
 const App = () => {
   return (
     <Router>
-      <Header title="My project" />
-      <Menu />
+      <Header />
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route />
+        <Route path="/details/" element={<Details />} />
       </Routes>
 
       <Footer />

@@ -1,44 +1,106 @@
 /* -------------- GENERAL ------------- */
 :root {
-  --main-color: rgb(195, 132, 14);
+  --main-color: #0d7580;
 }
 body {
   font-family: "Roboto", sans-serif;
 }
 
+.container {
+  max-width: 1230px;
+  margin: 0 auto;
+}
 h1 {
   font-size: 34px;
-  text-align: center;
-  margin: 40px 0;
+  line-height: 42.5px;
+  margin-bottom: 30px;
 }
 /* ----------------------------------- */
 /* -------------- HEADER ------------- */
 /* ----------------------------------- */
-header {
+
+header > div:first-child {
   display: flex;
+  justify-content: space-between;
+  border: 1px solid green;
+  height: 40px;
   align-items: center;
-  gap: 30px;
-  height: 80px;
-  padding-left: 40px;
-  border-bottom: 1px solid lightgray;
-}
-header p {
-  font-size: 30px;
-}
-/* ----------------------------------- */
-/* --------------- MAIN -------------- */
-/* ----------------------------------- */
-.nav p {
-  font-size: 24px;
-  text-decoration: none;
-  color: black;
-}
-main {
-  text-align: center;
-  margin-top: 80px;
-  margin-bottom: 100px;
 }
 
+header img {
+  width: 80px;
+  height: 30px;
+  cursor: pointer;
+}
+header input {
+  width: 600px;
+}
+
+.connect {
+  display: flex;
+  gap: 10px;
+}
+.connect button {
+  color: var(--main-color);
+  background-color: white;
+  border: 1px solid var(--main-color);
+  border-radius: 6px;
+  padding: 5px 8px;
+  cursor: pointer;
+}
+header > div > button {
+  background-color: var(--main-color);
+  color: white;
+  border-radius: 6px;
+  padding: 5px 12px;
+  border: none;
+  cursor: pointer;
+}
+/* ----------------------------------- */
+/* --------------- HOME -------------- */
+/* ----------------------------------- */
+
+/* ----------- Section Hero ----------- */
+.hero {
+  margin-top: 30px;
+  margin-bottom: 50px;
+  position: relative;
+}
+.hero img {
+  width: 100%;
+  height: 570px;
+  object-fit: cover;
+}
+.hero > div {
+  background-color: white;
+  width: 380px;
+  padding: 30px;
+  position: absolute;
+  top: 135px;
+  left: 50px;
+}
+
+/* --------- Section allOffer --------- */
+
+.allOffer {
+  display: flex;
+  border: 5px solid red;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.allOffer > div {
+  border: 3px solid green;
+  width: calc((100% - 60px) / 5);
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+.allOffer img {
+  height: 350px;
+  width: 100%;
+  object-fit: cover;
+}
 /* ----------------------------------- */
 /* -------------- FOOTER ------------- */
 /* ----------------------------------- */

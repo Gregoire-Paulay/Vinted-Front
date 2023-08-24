@@ -4,6 +4,7 @@
 }
 body {
   font-family: "Roboto", sans-serif;
+  background-color: lightgray;
 }
 
 .container {
@@ -18,7 +19,10 @@ h1 {
 /* ----------------------------------- */
 /* -------------- HEADER ------------- */
 /* ----------------------------------- */
-
+header {
+  background-color: white;
+  padding-bottom: 30px;
+}
 header > div:first-child {
   display: flex;
   justify-content: space-between;
@@ -57,12 +61,13 @@ header > div > button {
   cursor: pointer;
 }
 /* ----------------------------------- */
-/* --------------- HOME -------------- */
+/* ------------ PAGE HOME ------------ */
 /* ----------------------------------- */
-
+main {
+  background-color: white;
+}
 /* ----------- Section Hero ----------- */
 .hero {
-  margin-top: 30px;
   margin-bottom: 50px;
   position: relative;
 }
@@ -90,17 +95,29 @@ header > div > button {
   gap: 15px;
 }
 
-.offer {
+article {
   border: 2px solid green;
   width: calc((100% - 60px) / 5);
   margin-bottom: 15px;
   cursor: pointer;
   color: black;
 }
-.offer img {
+article > div {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 5px;
+  height: 30px;
+}
+article > div > img {
+  width: 30px;
+  border-radius: 50%;
+}
+article > img {
   height: 350px;
   width: 100%;
   object-fit: cover;
+  margin-bottom: 5px;
 }
 /* ----------------------------------- */
 /* -------------- FOOTER ------------- */

@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 // Import d'image
 import hero from "../assets/hero.jpeg";
 
 const Home = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
@@ -42,24 +43,37 @@ const Home = () => {
         <div className="allOffer">
           {data.offers.map((offer) => {
             return (
-              <Link
+              <article
                 key={offer._id}
-                to={"/offer/" + offer._id}
-                className="offer"
+                onClick={() => navigate("/offer/" + offer._id)}
               >
-                <p>{offer.owner.account.username}</p>
-                {/* {offer.owner.account.avatar.secure_url ? (
-                <img
-                  src={offer.owner.account.avatar.secure_url}
-                  alt="Avatar user"
-                />
-              ) : (
-                ""
-              )} */}
+                {/* Info de l'user qui à créer l'offre */}
+                <div>
+                  {offer.owner.account.avatar ? (
+                    <img
+                      src={offer.owner.account.avatar.secure_url}
+                      alt={offer.owner.account.username}
+                    />
+                  ) : (
+                    ""
+                  )}
+                  <p>{offer.owner.account.username}</p>
+                </div>
 
-                <img src={offer.product_image.secure_url} alt="Image Offre" />
+                <img
+                  src={offer.product_image.secure_url}
+                  alt={offer.product_name}
+                />
+                {/* Info sur le prix, taille et marque de l'offre*/}
                 <p>{offer.product_price} €</p>
-              </Link>
+                {offer.product_details.map((detail, index) => {
+                  if (detail.MARQUE || detail.TAILLE) {
+                    return <p key={index}>{detail.MARQUE || detail.TAILLE}</p>;
+                  } else {
+                    return null;
+                  }
+                })}
+              </article>
             );
           })}
         </div>

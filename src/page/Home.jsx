@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
+
+// Import d'image
 import hero from "../assets/hero.jpeg";
 
 const Home = () => {
-  const [data, setData] = useState();
+  const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -12,7 +15,9 @@ const Home = () => {
         const response = await axios.get(
           "https://lereacteur-vinted-api.herokuapp.com/offers/"
         );
-        setData(response.data);
+        const allArticles = response.data;
+        // console.log(allArticles);
+        setData(allArticles);
         setIsLoading(false);
       } catch (error) {
         console.log(error.response);
@@ -32,11 +37,16 @@ const Home = () => {
           <button>Commencer à vendre</button>
         </div>
       </section>
+
       <section className="container">
         <div className="allOffer">
           {data.offers.map((offer) => {
             return (
-              <div key={offer._id} onClick={() => {}}>
+              <Link
+                key={offer._id}
+                to={"/offer/" + offer._id}
+                className="offer"
+              >
                 <p>{offer.owner.account.username}</p>
                 {/* {offer.owner.account.avatar.secure_url ? (
                 <img
@@ -49,7 +59,7 @@ const Home = () => {
 
                 <img src={offer.product_image.secure_url} alt="Image Offre" />
                 <p>{offer.product_price} €</p>
-              </div>
+              </Link>
             );
           })}
         </div>

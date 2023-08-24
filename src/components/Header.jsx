@@ -12,7 +12,13 @@ const Header = (props) => {
 
         <input type="text" placeholder="Rechercher des articles" />
         <div className="connect">
-          <button>S'inscrire</button>
+          <button
+            onClick={() => {
+              navigate("/signup");
+            }}
+          >
+            S'inscrire
+          </button>
           <button>Se connecter</button>
         </div>
         <button>Vends tes articles</button>

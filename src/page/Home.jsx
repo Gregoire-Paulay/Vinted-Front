@@ -33,6 +33,7 @@ const Home = () => {
     <main>
       <section className="hero">
         <img src={hero} alt="bandeau vinted" />
+
         <div>
           <h1>Prêts à faire du tri dans vos placards?</h1>
           <button>Commencer à vendre</button>

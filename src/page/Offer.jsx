@@ -31,22 +31,24 @@ const Offer = () => {
   return isLoading ? (
     <p>Chargement en cours</p>
   ) : (
-    <div className="container">
-      <img src={data.product_image.secure_url} alt={data.product_name} />
-      <p>{data.product_price} €</p>
+    <section className="offer">
+      <div className="container">
+        <img src={data.product_image.secure_url} alt={data.product_name} />
+        <p>{data.product_price} €</p>
 
-      {data.product_details.map((detail, index) => {
-        // console.log(detail);
-        const keys = Object.keys(detail);
-        const key = keys[0];
+        {data.product_details.map((detail, index) => {
+          // console.log(detail);
+          const keys = Object.keys(detail);
+          const key = keys[0];
 
-        return (
-          <p key={index}>
-            {key} : {detail[key]}
-          </p>
-        );
-      })}
-    </div>
+          return (
+            <p key={index}>
+              {key} : {detail[key]}
+            </p>
+          );
+        })}
+      </div>
+    </section>
   );
 };
 

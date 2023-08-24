@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
+import Cookies from "js-cookie";
 
 const Header = (props) => {
   const navigate = useNavigate();
@@ -11,16 +12,28 @@ const Header = (props) => {
         </Link>
 
         <input type="text" placeholder="Rechercher des articles" />
-        <div className="connect">
+        {Cookies.get("token") ? (
           <button
+            className="disconnect"
             onClick={() => {
-              navigate("/signup");
+              Cookies.remove("token");
             }}
           >
-            S'inscrire
+            Se déconnecter
           </button>
-          <button>Se connecter</button>
-        </div>
+        ) : (
+          <div className="connect">
+            <button
+              onClick={() => {
+                navigate("/signup");
+              }}
+            >
+              S'inscrire
+            </button>
+            <button>Se connecter</button>
+          </div>
+        )}
+
         <button>Vends tes articles</button>
       </div>
     </header>

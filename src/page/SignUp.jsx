@@ -1,10 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -17,9 +20,11 @@ const SignUp = () => {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    // alert("success");
+    // event.preventDefault();
+    console.log("test");
     // lors du submit on veut envoyez les infos à notre API et si la requête est valide on veut récupérer le token de l'utilisateur et le sauvegardez dans les cookies
+
+    fetchData();
   };
 
   const fetchData = async () => {
@@ -32,14 +37,23 @@ const SignUp = () => {
           password: password,
         }
       );
-      console.log(response);
+      console.log(response.data);
+
+      // On récupère la clé token de ma requête que l'on stock dans un cookie nommée token
+      const token = response.data.token;
+      console.log(token);
+      Cookies.set("token", token, { expires: 15 });
     } catch (error) {
       console.log(error.message);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={(event) => {
+        handleSubmit(event);
+      }}
+    >
       <h2>S'inscrire</h2>
       <input
         type="text"
@@ -72,7 +86,14 @@ const SignUp = () => {
         </p>
       </div>
 
-      <button type="submit">S'inscrire</button>
+      <button
+        type="submit"
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        S'inscrire
+      </button>
     </form>
   );
 };

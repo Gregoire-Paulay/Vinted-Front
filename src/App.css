@@ -60,6 +60,10 @@ header > div > button {
   border: none;
   cursor: pointer;
 }
+
+.disconnect {
+  background-color: darkred;
+}
 /* ----------------------------------- */
 /* ------------ PAGE HOME ------------ */
 /* ----------------------------------- */

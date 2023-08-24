@@ -20,10 +20,7 @@ const SignUp = () => {
   };
 
   const handleSubmit = (event) => {
-    // event.preventDefault();
-    console.log("test");
-    // lors du submit on veut envoyez les infos à notre API et si la requête est valide on veut récupérer le token de l'utilisateur et le sauvegardez dans les cookies
-
+    // On veut envoyez les infos à notre API et si la requête est valide on veut récupérer le token de l'utilisateur et le sauvegardez dans les cookies
     fetchData();
   };
 
@@ -41,8 +38,8 @@ const SignUp = () => {
 
       // On récupère la clé token de ma requête que l'on stock dans un cookie nommée token
       const token = response.data.token;
-      console.log(token);
       Cookies.set("token", token, { expires: 15 });
+      navigate("/");
     } catch (error) {
       console.log(error.message);
     }
@@ -86,14 +83,8 @@ const SignUp = () => {
         </p>
       </div>
 
-      <button
-        type="submit"
-        onClick={() => {
-          navigate("/");
-        }}
-      >
-        S'inscrire
-      </button>
+      <button type="submit">S'inscrire</button>
+      <p>Tu as déjà un compte ? connecte-toi !</p>
     </form>
   );
 };

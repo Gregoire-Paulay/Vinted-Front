@@ -22,7 +22,7 @@ const Header = (props) => {
             Se déconnecter
           </button>
         ) : (
-          <div className="connect">
+          <div className="sign-connect">
             <button
               onClick={() => {
                 navigate("/signup");
@@ -30,7 +30,13 @@ const Header = (props) => {
             >
               S'inscrire
             </button>
-            <button>Se connecter</button>
+            <button
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              Se connecter
+            </button>
           </div>
         )}
 

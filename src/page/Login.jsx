@@ -3,8 +3,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = ({ handleToken }) => {
+  // State qui gère mes input
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  //   State qui gère le message d'erreur
+  const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
 
@@ -19,6 +23,8 @@ const Login = ({ handleToken }) => {
 
   const fetchData = async () => {
     try {
+      setErrorMessage("");
+
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/user/login",
         {
@@ -30,7 +36,12 @@ const Login = ({ handleToken }) => {
       handleToken(response.data.token);
       navigate("/");
     } catch (error) {
-      console.log(error.message);
+      console.log(error.response.data);
+      if (error.response.data.message === "User not found") {
+        setErrorMessage("Connexion non autorisé");
+      } else if (error.response.data.error === "Unauthorized") {
+        setErrorMessage("Connexion non autorisé");
+      }
     }
   };
 
@@ -60,6 +71,7 @@ const Login = ({ handleToken }) => {
           handleChange(event, setPassword);
         }}
       />
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       <button type="submit">Se connecter</button>
       <p
         onClick={() => {

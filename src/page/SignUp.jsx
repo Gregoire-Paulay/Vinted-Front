@@ -3,10 +3,16 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SignUp = ({ handleToken }) => {
+  //  Stae pour gérer mes input
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newsletter, setNewsletter] = useState(false);
+
+  //   State qui gère le message d'erreur
+  const [errorMessage, setErrorMessage] = useState("");
+
+  //navigation au click après la soumission du formulaire
   const navigate = useNavigate();
 
   const handleChange = (event, setChange) => {
@@ -21,6 +27,9 @@ const SignUp = ({ handleToken }) => {
 
   const fetchData = async () => {
     try {
+      //   Je fais disparaitre le message d'erreur
+      setErrorMessage("");
+
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/user/signup",
         {
@@ -30,13 +39,21 @@ const SignUp = ({ handleToken }) => {
           newsletter: newsletter,
         }
       );
-      console.log(response.data);
+      // console.log(response.data);
 
-      // On récupère la clé token de ma requête que l'on stock dans un cookie nommée token
+      // On récupère la clé token de ma requête que l'on stock dans un cookie
       handleToken(response.data.token);
       navigate("/");
     } catch (error) {
       console.log(error.response.data);
+      if (error.response.data.message === "This email already has an account") {
+        // Je met à jour mon state errorMessage
+        setErrorMessage(
+          "Ce mail est déjà utilisé, veuillez en choisir un autre :)"
+        );
+      } else if (error.response.data.message === "Missing parameters") {
+        setErrorMessage("Veuillez remplir tous les champs :)");
+      }
     }
   };
 
@@ -84,13 +101,14 @@ const SignUp = ({ handleToken }) => {
           }}
         />
         <p>S'inscrire à notre Newsletter</p>
+
         <p>
           En m'inscrivant je confirme avoir lu et accepté les Termes &
           Conditions et Politique de Confidentialité de Vinted. Je confirme
           avoir au moins 18 ans.
         </p>
       </div>
-
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       <button type="submit">S'inscrire</button>
       <p
         onClick={() => {

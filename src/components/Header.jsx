@@ -1,8 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
-import Cookies from "js-cookie";
 
-const Header = ({ token, setToken }) => {
+const Header = ({ token, handleToken }) => {
   const navigate = useNavigate();
   return (
     <header>
@@ -16,8 +15,7 @@ const Header = ({ token, setToken }) => {
           <button
             className="disconnect"
             onClick={() => {
-              Cookies.remove("token");
-              setToken(null);
+              handleToken(null);
             }}
           >
             Se déconnecter

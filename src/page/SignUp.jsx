@@ -1,9 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 
-const SignUp = ({ setToken }) => {
+const SignUp = ({ handleToken }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,10 +33,8 @@ const SignUp = ({ setToken }) => {
       console.log(response.data);
 
       // On récupère la clé token de ma requête que l'on stock dans un cookie nommée token
-      const token = response.data.token;
-      Cookies.set("token", token, { expires: 15 });
+      handleToken(response.data.token);
       navigate("/");
-      setToken(token);
     } catch (error) {
       console.log(error.response.data);
     }

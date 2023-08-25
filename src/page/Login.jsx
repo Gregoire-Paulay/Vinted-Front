@@ -3,15 +3,19 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-const Login = () => {
-  const [password, setPassword] = useState("");
+const Login = ({ setToken }) => {
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+  const navigate = useNavigate();
+
+  const handleChange = (event, setChange) => {
+    setChange(event.target.value);
   };
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    fetchData();
   };
 
   const fetchData = async () => {
@@ -24,13 +28,21 @@ const Login = () => {
         }
       );
       console.log(response.data);
+      const token = response.data.token;
+      Cookies.set("token", token, { expires: 15 });
+      navigate("/");
+      setToken(token);
     } catch (error) {
       console.log(error.message);
     }
   };
 
   return (
-    <form onSubmit={() => {}}>
+    <form
+      onSubmit={(event) => {
+        handleSubmit(event);
+      }}
+    >
       <h2>Se connecter</h2>
 
       <input
@@ -38,17 +50,27 @@ const Login = () => {
         placeholder="Email"
         name="email"
         value={email}
-        onChange={handleEmailChange}
+        onChange={(event) => {
+          handleChange(event, setEmail);
+        }}
       />
       <input
         type="password"
         placeholder="Password"
         name="password"
         value={password}
-        onChange={handlePasswordChange}
+        onChange={(event) => {
+          handleChange(event, setPassword);
+        }}
       />
       <button type="submit">Se connecter</button>
-      <p>Pas encore de compte ? Inscris-toi !</p>
+      <p
+        onClick={() => {
+          navigate("/signup");
+        }}
+      >
+        Pas encore de compte ? Inscris-toi !
+      </p>
     </form>
   );
 };

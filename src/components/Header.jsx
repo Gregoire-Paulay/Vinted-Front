@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import Cookies from "js-cookie";
 
-const Header = (props) => {
+const Header = ({ token, setToken }) => {
   const navigate = useNavigate();
   return (
     <header>
@@ -12,11 +12,12 @@ const Header = (props) => {
         </Link>
 
         <input type="text" placeholder="Rechercher des articles" />
-        {Cookies.get("token") ? (
+        {token ? (
           <button
             className="disconnect"
             onClick={() => {
               Cookies.remove("token");
+              setToken(null);
             }}
           >
             Se déconnecter

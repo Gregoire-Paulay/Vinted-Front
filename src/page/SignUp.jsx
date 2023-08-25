@@ -3,23 +3,19 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-const SignUp = () => {
+const SignUp = ({ setToken }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [newsletter, setNewsletter] = useState(false);
   const navigate = useNavigate();
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
-  };
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+  const handleChange = (event, setChange) => {
+    setChange(event.target.value);
   };
 
   const handleSubmit = (event) => {
+    event.preventDefault();
     // On veut envoyez les infos à notre API et si la requête est valide on veut récupérer le token de l'utilisateur et le sauvegardez dans les cookies
     fetchData();
   };
@@ -32,6 +28,7 @@ const SignUp = () => {
           username: username,
           email: email,
           password: password,
+          newsletter: newsletter,
         }
       );
       console.log(response.data);
@@ -40,8 +37,9 @@ const SignUp = () => {
       const token = response.data.token;
       Cookies.set("token", token, { expires: 15 });
       navigate("/");
+      setToken(token);
     } catch (error) {
-      console.log(error.message);
+      console.log(error.response.data);
     }
   };
 
@@ -57,24 +55,37 @@ const SignUp = () => {
         placeholder="Nom d'utilisateur"
         name="username"
         value={username}
-        onChange={handleUsernameChange}
+        onChange={(event) => {
+          handleChange(event, setUsername);
+        }}
       />
       <input
         type="email"
         placeholder="Email"
         name="email"
         value={email}
-        onChange={handleEmailChange}
+        onChange={(event) => {
+          handleChange(event, setEmail);
+        }}
       />
       <input
         type="password"
         placeholder="Mot de passe"
         name="password"
         value={password}
-        onChange={handlePasswordChange}
+        onChange={(event) => {
+          handleChange(event, setPassword);
+        }}
       />
       <div>
-        <input type="checkbox" name="newsletter" />
+        <input
+          type="checkbox"
+          name="newsletter"
+          checked={newsletter}
+          onChange={() => {
+            setNewsletter(!newsletter);
+          }}
+        />
         <p>S'inscrire à notre Newsletter</p>
         <p>
           En m'inscrivant je confirme avoir lu et accepté les Termes &
@@ -84,7 +95,13 @@ const SignUp = () => {
       </div>
 
       <button type="submit">S'inscrire</button>
-      <p>Tu as déjà un compte ? connecte-toi !</p>
+      <p
+        onClick={() => {
+          navigate("/login");
+        }}
+      >
+        Tu as déjà un compte ? connecte-toi !
+      </p>
     </form>
   );
 };

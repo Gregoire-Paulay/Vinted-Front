@@ -34,19 +34,21 @@ const Offer = () => {
     <section className="offer">
       <div className="container">
         <img src={data.product_image.secure_url} alt={data.product_name} />
-        <p>{data.product_price} €</p>
 
-        {data.product_details.map((detail, index) => {
-          // console.log(detail);
-          const keys = Object.keys(detail);
-          const key = keys[0];
+        <div className="details">
+          <h3>{data.product_price} €</h3>
+          {data.product_details.map((detail, index) => {
+            // console.log(detail);
+            const keys = Object.keys(detail);
+            const key = keys[0];
 
-          return (
-            <p key={index}>
-              {key} : {detail[key]}
-            </p>
-          );
-        })}
+            return (
+              <p key={index}>
+                {key} : {detail[key]}
+              </p>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

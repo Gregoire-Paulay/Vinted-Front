@@ -10,7 +10,13 @@ const Header = ({ token, handleToken }) => {
           <img src={logo} alt="Logo Vinted" />
         </Link>
 
-        <input type="text" placeholder="Rechercher des articles" />
+        <div className="search">
+          <span>
+            <i className="fa-solid fa-magnifying-glass"></i>
+          </span>
+          <input type="text" placeholder="Rechercher des articles" />
+        </div>
+
         {token ? (
           <button
             className="disconnect"

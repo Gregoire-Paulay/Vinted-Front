@@ -5,7 +5,7 @@ import axios from "axios";
 // Import d'image
 import hero from "../assets/hero.jpeg";
 
-const Home = () => {
+const Home = ({ search }) => {
   const navigate = useNavigate();
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -14,7 +14,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/offers/"
+          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}`
         );
         const allArticles = response.data;
         // console.log(allArticles);
@@ -25,7 +25,7 @@ const Home = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [search]);
 
   return isLoading ? (
     <span>En cours de chargement ... </span>

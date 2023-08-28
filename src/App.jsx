@@ -16,6 +16,8 @@ import Footer from "./components/Footer";
 const App = () => {
   const [token, setToken] = useState(Cookies.get("token") || null);
 
+  const [search, setSearch] = useState("");
+
   const handleToken = (token) => {
     if (token) {
       Cookies.set("token", token, { expires: 15 });
@@ -28,10 +30,15 @@ const App = () => {
 
   return (
     <Router>
-      <Header token={token} handleToken={handleToken} />
+      <Header
+        token={token}
+        handleToken={handleToken}
+        search={search}
+        setSearch={setSearch}
+      />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home search={search} />} />
         <Route path="/offer/:id" element={<Offer />} />
         <Route path="/signup" element={<SignUp handleToken={handleToken} />} />
         <Route path="/login" element={<Login handleToken={handleToken} />} />

@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 
-const Header = ({ token, handleToken }) => {
+const Header = ({ token, handleToken, search, setSearch }) => {
   const navigate = useNavigate();
   return (
     <header>
@@ -14,7 +14,14 @@ const Header = ({ token, handleToken }) => {
           <span>
             <i className="fa-solid fa-magnifying-glass"></i>
           </span>
-          <input type="text" placeholder="Rechercher des articles" />
+          <input
+            type="text"
+            placeholder="Rechercher des articles"
+            value={search}
+            onChange={(event) => {
+              setSearch(event.target.value);
+            }}
+          />
         </div>
 
         {token ? (

@@ -21,7 +21,7 @@ const Offer = () => {
         setData(foundOffer);
         setIsLoading(false);
       } catch (error) {
-        console.log(error.message);
+        console.log(error.response);
       }
     };
 
@@ -36,18 +36,32 @@ const Offer = () => {
         <img src={data.product_image.secure_url} alt={data.product_name} />
 
         <div className="details">
-          <h3>{data.product_price} €</h3>
-          {data.product_details.map((detail, index) => {
-            // console.log(detail);
-            const keys = Object.keys(detail);
-            const key = keys[0];
+          <div>
+            <h3>{data.product_price} €</h3>
+            {data.product_details.map((detail, index) => {
+              // console.log(detail);
+              const keys = Object.keys(detail);
+              const key = keys[0];
 
-            return (
-              <p key={index}>
-                {key} : {detail[key]}
-              </p>
-            );
-          })}
+              return (
+                <div key={index}>
+                  {key} : {detail[key]}
+                </div>
+              );
+            })}
+          </div>
+
+          <div>
+            <h4>{data.product_name}</h4>
+            <p>{data.product_description}</p>
+            <div>
+              {data.owner.account.avatar && (
+                <img src={data.owner.account.avatar.secure_url} alt="" />
+              )}
+
+              <span>{data.owner.account.username}</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>

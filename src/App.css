@@ -206,6 +206,7 @@ article p:nth-of-type(3) {
   justify-content: center;
   gap: 30px;
   padding-bottom: 90px;
+  border: 3px solid blue;
 }
 
 .offer img {
@@ -220,11 +221,22 @@ article p:nth-of-type(3) {
   border-radius: 5px;
   padding: 40px;
   width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+.details > div {
+  border: 1px solid green;
+}
+.details img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
 }
 /* ----------------------------------- */
 /* ------- PAGE SIGNUP - LOGIN ------- */
 /* ----------------------------------- */
-form {
+.log-sign {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -232,7 +244,7 @@ form {
   padding: 40px 0;
   margin-bottom: 300px;
 }
-form > div {
+.log-sign > div {
   display: flex;
   width: 240px;
   flex-wrap: wrap;
@@ -241,24 +253,24 @@ form > div {
   font-size: 16px;
   line-height: 13.3px;
 }
-form > input {
+.log-sign > input {
   width: 250px;
   border: none;
   border-bottom: 1px solid gray;
   padding: 8px 0px;
   font-size: 16px;
 }
-form > div > input {
+.log-sign > div > input {
   cursor: pointer;
 }
 
-form > div > p + p {
+.log-sign > div > p + p {
   font-size: 12px;
   line-height: 10px;
   color: gray;
 }
 
-form > button {
+.log-sign > button {
   background-color: var(--main-color);
   border: none;
   padding: 6px 0;
@@ -268,12 +280,40 @@ form > button {
   border-radius: 8px;
   cursor: pointer;
 }
-form > :last-child {
+.log-sign > :last-child {
   color: var(--main-color);
   font-size: 12px;
   line-height: 10px;
   cursor: pointer;
 }
+
+/* ----------------------------------- */
+/* ----------- PAGE PUBLISH ---------- */
+/* ----------------------------------- */
+.publish {
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.publish p {
+  width: 150px;
+}
+.publish input {
+  width: 400px;
+}
+.publish > div {
+  /* border: 1px solid orange; */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.publish > div > div {
+  display: flex;
+  gap: 100px;
+  /* border: 1px solid green; */
+}
+
 /* ----------------------------------- */
 /* -------------- FOOTER ------------- */
 /* ----------------------------------- */

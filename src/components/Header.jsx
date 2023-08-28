@@ -36,6 +36,7 @@ const Header = ({
               }}
             />
           </div>
+
           <div className="sortPrice">
             <div>
               <p>Triez par prix :</p>
@@ -100,7 +101,17 @@ const Header = ({
           </div>
         )}
 
-        <button>Vends tes articles</button>
+        <button
+          onClick={() => {
+            if (token) {
+              navigate("/publish");
+            } else {
+              navigate("/login");
+            }
+          }}
+        >
+          Vends tes articles
+        </button>
       </div>
     </header>
   );

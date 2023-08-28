@@ -47,6 +47,7 @@ const Login = ({ handleToken }) => {
 
   return (
     <form
+      className="log-sign"
       onSubmit={(event) => {
         handleSubmit(event);
       }}

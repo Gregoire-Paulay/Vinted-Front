@@ -8,6 +8,7 @@ import Home from "./page/Home";
 import Offer from "./page/Offer";
 import SignUp from "./page/SignUp";
 import Login from "./page/Login";
+import Publish from "./page/Publish";
 
 // Import de mes Components
 import Header from "./components/Header";
@@ -62,6 +63,7 @@ const App = () => {
         <Route path="/offer/:id" element={<Offer />} />
         <Route path="/signup" element={<SignUp handleToken={handleToken} />} />
         <Route path="/login" element={<Login handleToken={handleToken} />} />
+        <Route path="/publish" element={<Publish />} />
       </Routes>
 
       <Footer />

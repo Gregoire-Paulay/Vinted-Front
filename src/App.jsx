@@ -16,7 +16,11 @@ import Footer from "./components/Footer";
 const App = () => {
   const [token, setToken] = useState(Cookies.get("token") || null);
 
+  // state de mes filtres
   const [search, setSearch] = useState("");
+  const [priceMin, setPriceMin] = useState("");
+  const [priceMax, setPriceMax] = useState("");
+  const [sort, setSort] = useState("");
 
   const handleToken = (token) => {
     if (token) {
@@ -35,10 +39,26 @@ const App = () => {
         handleToken={handleToken}
         search={search}
         setSearch={setSearch}
+        priceMin={priceMin}
+        setPriceMin={setPriceMin}
+        priceMax={priceMax}
+        setPriceMax={setPriceMax}
+        sort={sort}
+        setSort={setSort}
       />
 
       <Routes>
-        <Route path="/" element={<Home search={search} />} />
+        <Route
+          path="/"
+          element={
+            <Home
+              search={search}
+              priceMin={priceMin}
+              priceMax={priceMax}
+              sort={sort}
+            />
+          }
+        />
         <Route path="/offer/:id" element={<Offer />} />
         <Route path="/signup" element={<SignUp handleToken={handleToken} />} />
         <Route path="/login" element={<Login handleToken={handleToken} />} />

@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 
@@ -9,14 +9,51 @@ const stripePromise = loadStripe(
 );
 
 const Payment = ({ token }) => {
+  const location = useLocation();
+  const { title, price } = location.state;
+
+  const protectFee = 0.5;
+  const shippingFee = 2.5;
+  const total = protectFee + shippingFee + price;
+
   return token ? (
-    <div>
-      <div className="container">
-        <Elements stripe={stripePromise}>
-          <CheckoutForm />
-        </Elements>
+    <section className="payment-page">
+      <div className="smallcontainer">
+        <div className="payment">
+          <section>
+            <p>Résumé de la commande</p>
+            <div>
+              <p>Commande</p>
+              <p>{price} €</p>
+            </div>
+            <div>
+              <p>Frais protection acheteurs</p>
+              <p>{protectFee.toFixed(2)} €</p>
+            </div>
+            <div>
+              <p>Frais de port</p>
+              <p>{shippingFee.toFixed(2)} €</p>
+            </div>
+          </section>
+
+          <section>
+            <div>
+              <p>Total</p>
+              <p>{total} €</p>
+            </div>
+            <p>
+              Il ne vous reste plus qu'une étape pour vous offrir {title}. Cela
+              vous coûtera {total} € (frais de protection et frais de port
+              inclus)
+            </p>
+
+            <Elements stripe={stripePromise}>
+              <CheckoutForm title={title} price={price} />
+            </Elements>
+          </section>
+        </div>
       </div>
-    </div>
+    </section>
   ) : (
     <Navigate to="/login" />
   );

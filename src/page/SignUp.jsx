@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const SignUp = ({ handleTokenAndId }) => {
+const SignUp = ({ handleToken }) => {
   //  Stae pour gérer mes input
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -51,7 +51,7 @@ const SignUp = ({ handleTokenAndId }) => {
       console.log(response.data);
 
       // On récupère la clé token de ma requête que l'on stock dans un cookie
-      handleTokenAndId(response.data.token, response.data._id);
+      handleToken(response.data.token);
       // navigate("/");
     } catch (error) {
       console.log(error.response.data);

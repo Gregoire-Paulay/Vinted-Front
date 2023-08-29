@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ handleTokenAndId }) => {
+const Login = ({ handleToken }) => {
   // State qui gère mes input
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,7 +33,7 @@ const Login = ({ handleTokenAndId }) => {
         }
       );
       console.log(response.data);
-      handleTokenAndId(response.data.token, response.data._id);
+      handleToken(response.data.token);
       navigate("/");
     } catch (error) {
       console.log(error.response.data);

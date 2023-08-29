@@ -4,7 +4,7 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import Cookies from "js-cookie";
 import axios from "axios";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ title, price }) => {
   const stripe = useStripe(); // requête vers stripe pour lui envoyer les codes
   const elements = useElements(); // Récupérer les données bancaires de l'utilisateur
 
@@ -13,6 +13,7 @@ const CheckoutForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     try {
       setIsPaying(true);
       const cardElement = elements.getElement(CardElement); // Récupérer le contenue de Cardelement
@@ -25,11 +26,14 @@ const CheckoutForm = () => {
 
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/payment",
-        { stripeToken: stripeToken }
+        { token: stripeToken, title: title, amount: price }
       );
       console.log(response.data);
-
       setIsPaying(false);
+
+      if (response.data.status === "succeeded") {
+        setPaymentdone(true);
+      }
     } catch (error) {
       console.log(error.response);
     }
@@ -38,10 +42,14 @@ const CheckoutForm = () => {
   return (
     <>
       {!paymentDone ? (
-        <form onSubmit={handleSubmit}>
-          <CardElement />
+        <form
+          onSubmit={(event) => {
+            handleSubmit(event);
+          }}
+        >
+          <CardElement className="card" />
           <button type="submit" disabled={isPaying}>
-            Valider
+            Payer
           </button>
         </form>
       ) : (

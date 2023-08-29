@@ -3,8 +3,7 @@ import logo from "../assets/logo.png";
 
 const Header = ({
   token,
-  id,
-  handleTokenAndId,
+  handleToken,
   search,
   setSearch,
   priceMin,
@@ -78,7 +77,7 @@ const Header = ({
           <button
             className="disconnect"
             onClick={() => {
-              handleTokenAndId(null);
+              handleToken(null);
             }}
           >
             Se déconnecter

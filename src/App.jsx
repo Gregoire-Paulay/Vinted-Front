@@ -17,7 +17,6 @@ import Footer from "./components/Footer";
 
 const App = () => {
   const [token, setToken] = useState(Cookies.get("token") || null);
-  const [id, setId] = useState(Cookies.get("id") || null);
 
   // state de mes filtres
   const [search, setSearch] = useState("");
@@ -25,17 +24,13 @@ const App = () => {
   const [priceMax, setPriceMax] = useState("");
   const [sort, setSort] = useState("");
 
-  const handleTokenAndId = (token, id) => {
+  const handleToken = (token, id) => {
     if (token) {
       Cookies.set("token", token, { expires: 15 });
       setToken(token);
-      Cookies.set("id", id, { expires: 15 });
-      setId(id);
     } else {
       Cookies.remove("token");
       setToken(null);
-      Cookies.remove("id");
-      setId(null);
     }
   };
 
@@ -43,8 +38,7 @@ const App = () => {
     <Router>
       <Header
         token={token}
-        id={id}
-        handleTokenAndId={handleTokenAndId}
+        handleToken={handleToken}
         search={search}
         setSearch={setSearch}
         priceMin={priceMin}
@@ -68,14 +62,8 @@ const App = () => {
           }
         />
         <Route path="/offer/:id" element={<Offer token={token} />} />
-        <Route
-          path="/signup"
-          element={<SignUp handleTokenAndId={handleTokenAndId} />}
-        />
-        <Route
-          path="/login"
-          element={<Login handleTokenAndId={handleTokenAndId} />}
-        />
+        <Route path="/signup" element={<SignUp handleToken={handleToken} />} />
+        <Route path="/login" element={<Login handleToken={handleToken} />} />
         <Route path="/publish" element={<Publish token={token} />} />
         <Route path="/payment" element={<Payment token={token} />} />
       </Routes>

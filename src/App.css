@@ -11,6 +11,10 @@ body {
   max-width: 1230px;
   margin: 0 auto;
 }
+.smallcontainer {
+  max-width: 600px;
+  margin: 0 auto;
+}
 h1 {
   font-size: 34px;
   line-height: 42.5px;
@@ -133,6 +137,7 @@ main {
   height: 450px;
   object-fit: cover;
 }
+
 .hero > div {
   background-color: white;
   width: 380px;
@@ -373,6 +378,84 @@ article p:nth-of-type(3) {
 .picture:hover {
   background-color: var(--main-color);
   color: white;
+}
+
+/* ----------------------------------- */
+/* ----------- PAGE PAYMENT ---------- */
+/* ----------------------------------- */
+.payment-page {
+  background-color: whitesmoke;
+  border: 3px solid red;
+}
+.payment {
+  border: 2px solid black;
+  margin: 50px 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 550px;
+  justify-content: space-between;
+  border-radius: 6px;
+  background-color: white;
+}
+
+.payment > section {
+  /* border: 1px solid green; */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.payment > section > div {
+  display: flex;
+  justify-content: space-between;
+  /* border: 1px solid blue; */
+}
+
+.payment > section:first-of-type {
+  padding-bottom: 55px;
+  border-bottom: 1px solid lightgray;
+  color: #666666;
+}
+.payment > section:first-of-type > p {
+  margin-bottom: 30px;
+  font-size: 20px;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+}
+
+.payment > section:nth-of-type(2) > div:first-of-type {
+  border: 2px solid orange;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 55px;
+}
+.payment > section:nth-of-type(2) > p {
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 25px;
+}
+
+.card {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 8px 0;
+  margin-top: 15px;
+  box-shadow: 1px 1px 4px 0px #000000;
+}
+.payment button {
+  width: 100%;
+  padding: 10px 0;
+  background-color: #23bb6a;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 18px;
+}
+.payment span {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
 }
 /* ----------------------------------- */
 /* -------------- FOOTER ------------- */

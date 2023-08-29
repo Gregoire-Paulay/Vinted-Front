@@ -63,10 +63,8 @@ const Publish = ({ token }) => {
         <form className="publish" onSubmit={handleSubmit}>
           <h2>Vends ton article</h2>
           <div>
-            <div>
-              <label htmlFor="filePick" className="picture">
-                Choisissez une image
-              </label>
+            <div className="picture">
+              <label htmlFor="filePick">Choisissez une image</label>
               <input
                 style={{ display: "none" }}
                 id="filePick"
@@ -96,12 +94,14 @@ const Publish = ({ token }) => {
                 }}
               />
             </div>
-            <div>
+            <div className="offer-description">
               <label htmlFor="description">Décris ton article</label>
-              <input
+              <textarea
                 id="description"
                 type="text"
                 name="description"
+                cols="64"
+                rows="10"
                 placeholder="ex: Jamais porté, taille grand"
                 value={description}
                 onChange={(event) => {
@@ -199,7 +199,9 @@ const Publish = ({ token }) => {
             </div>
           </div>
 
-          <button type="submit">Ajouter</button>
+          <div>
+            <button type="submit">Ajouter</button>
+          </div>
         </form>
         {/* {cloudinaryPicture && <img src={cloudinaryPicture} alt="" />} */}
       </div>

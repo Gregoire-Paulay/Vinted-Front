@@ -103,11 +103,7 @@ const Header = ({
 
         <button
           onClick={() => {
-            if (token) {
-              navigate("/publish");
-            } else {
-              navigate("/login");
-            }
+            navigate("/publish");
           }}
         >
           Vends tes articles

@@ -8,6 +8,7 @@ const SignUp = ({ handleToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newsletter, setNewsletter] = useState(false);
+  const [avatar, setAvatar] = useState();
 
   //   State qui gère le message d'erreur
   const [errorMessage, setErrorMessage] = useState("");
@@ -30,20 +31,28 @@ const SignUp = ({ handleToken }) => {
       //   Je fais disparaitre le message d'erreur
       setErrorMessage("");
 
+      const formData = new FormData();
+      formData.append("username", username);
+      formData.append("avatar", avatar);
+      formData.append("email", email);
+      formData.append("password", password);
+      formData.append("newsletter", newsletter);
+
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-        {
-          username: username,
-          email: email,
-          password: password,
-          newsletter: newsletter,
-        }
+        formData
+        // {
+        //   username: username,
+        //   email: email,
+        //   password: password,
+        //   newsletter: newsletter,
+        // }
       );
-      // console.log(response.data);
+      console.log(response.data);
 
       // On récupère la clé token de ma requête que l'on stock dans un cookie
       handleToken(response.data.token);
-      navigate("/");
+      // navigate("/");
     } catch (error) {
       console.log(error.response.data);
       if (error.response.data.message === "This email already has an account") {
@@ -74,6 +83,17 @@ const SignUp = ({ handleToken }) => {
           handleChange(event, setUsername);
         }}
       />
+      <label htmlFor="avatar">Choisir son avatar</label>
+      <input
+        style={{ display: "none" }}
+        type="file"
+        id="avatar"
+        onChange={(event) => {
+          // console.log(event);
+          setAvatar(event.target.files[0]);
+        }}
+      />
+      {avatar && <img src={URL.createObjectURL(avatar)} alt="Mon avatar" />}
       <input
         type="email"
         placeholder="Email"

@@ -287,6 +287,12 @@ article p:nth-of-type(3) {
   cursor: pointer;
 }
 
+.log-sign img {
+  border: 2px solid black;
+  border-radius: 50%;
+  width: 100px;
+  object-fit: cover;
+}
 /* ----------------------------------- */
 /* ----------- PAGE PUBLISH ---------- */
 /* ----------------------------------- */
@@ -296,7 +302,7 @@ article p:nth-of-type(3) {
   flex-direction: column;
   gap: 30px;
 }
-.publish p {
+.publish label {
   width: 150px;
 }
 .publish input {
@@ -311,9 +317,11 @@ article p:nth-of-type(3) {
 .publish > div > div {
   display: flex;
   gap: 100px;
-  /* border: 1px solid green; */
+  border: 1px solid green;
 }
-
+.publish img {
+  width: 400px;
+}
 /* ----------------------------------- */
 /* -------------- FOOTER ------------- */
 /* ----------------------------------- */

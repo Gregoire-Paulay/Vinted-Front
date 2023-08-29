@@ -1,8 +1,8 @@
 import { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
-import Cookies from "js-cookie";
 
-const Publish = () => {
+const Publish = ({ token }) => {
   // State pour gérer mes différents inputs
   const [picture, setPicture] = useState();
   const [title, setTitle] = useState("");
@@ -14,8 +14,10 @@ const Publish = () => {
   const [condition, setCondition] = useState("");
   const [city, setCity] = useState("");
 
+  const navigate = useNavigate();
+
   // state contenant l'url fourni par cloudinary
-  const [cloudinaryPicture, setCloudinaryPicture] = useState("");
+  // const [cloudinaryPicture, setCloudinaryPicture] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -38,14 +40,14 @@ const Publish = () => {
         formData,
         {
           headers: {
-            authorization: `Bearer ${Cookies.get("token")}`,
+            authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data",
           },
         }
       );
-      setCloudinaryPicture(response.data.product_image.secure_url);
-      //   console.log(response.data);
-      //   console.log(response.data.product_image.secure_url);
+      console.log(response.data);
+      // setCloudinaryPicture(response.data.product_image.secure_url);
+      navigate("/");
     } catch (error) {
       console.log(error.response);
     }
@@ -55,24 +57,29 @@ const Publish = () => {
     set(event.target.value);
   };
 
-  return (
+  return token ? (
     <div>
       <form className="publish" onSubmit={handleSubmit}>
         <h2>Vends ton article</h2>
         <div>
+          <label htmlFor="filePick">Choisissez une image</label>
           <input
+            style={{ display: "none" }}
+            id="filePick"
             type="file"
             onChange={(event) => {
               // console.log(event);
               setPicture(event.target.files[0]);
             }}
           />
+          {picture && <img src={URL.createObjectURL(picture)} alt={title} />}
         </div>
 
         <div>
           <div>
-            <p>Titre</p>
+            <label htmlFor="title">Titre</label>
             <input
+              id="title"
               type="text"
               name="title"
               placeholder="ex: Pyjama enfant"
@@ -83,8 +90,9 @@ const Publish = () => {
             />
           </div>
           <div>
-            <p>Décris ton article</p>
+            <label htmlFor="description">Décris ton article</label>
             <input
+              id="description"
               type="text"
               name="description"
               placeholder="ex: Jamais porté, taille grand"
@@ -98,8 +106,9 @@ const Publish = () => {
 
         <div>
           <div>
-            <p>Marque</p>
+            <label htmlFor="brand">Marque</label>
             <input
+              id="brand"
               type="text"
               name="brand"
               placeholder="ex: Levis"
@@ -110,8 +119,9 @@ const Publish = () => {
             />
           </div>
           <div>
-            <p>Taille</p>
+            <label htmlFor="size">Taille</label>
             <input
+              id="size"
               type="text"
               name="size"
               placeholder="ex: 38"
@@ -122,8 +132,9 @@ const Publish = () => {
             />
           </div>
           <div>
-            <p>Couleur</p>
+            <label htmlFor="color">Couleur</label>
             <input
+              id="color"
               type="text"
               name="color"
               placeholder="ex: Taupe"
@@ -134,8 +145,9 @@ const Publish = () => {
             />
           </div>
           <div>
-            <p>Etat</p>
+            <label htmlFor="consition">Etat</label>
             <input
+              id="condition"
               type="text"
               name="condition"
               placeholder="ex: Neuf avec étiquette"
@@ -146,8 +158,9 @@ const Publish = () => {
             />
           </div>
           <div>
-            <p>Lieu</p>
+            <label htmlFor="city">Lieu</label>
             <input
+              id="city"
               type="text"
               name="city"
               placeholder="ex: Saint-Remy-en-Bouzemont-Saint-Genest-et-Isson"
@@ -161,9 +174,10 @@ const Publish = () => {
 
         <div>
           <div>
-            <p>Prix</p>
+            <label htmlFor="price">Prix</label>
             <input
-              type="text"
+              id="price"
+              type="number"
               name="price"
               placeholder="0,00 €"
               value={price}
@@ -178,8 +192,10 @@ const Publish = () => {
 
         <button type="submit">Ajouter</button>
       </form>
-      {cloudinaryPicture && <img src={cloudinaryPicture} alt="" />}
+      {/* {cloudinaryPicture && <img src={cloudinaryPicture} alt="" />} */}
     </div>
+  ) : (
+    <Navigate to="/login" />
   );
 };
 

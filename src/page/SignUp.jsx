@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const SignUp = ({ handleToken }) => {
+const SignUp = ({ handleTokenAndId }) => {
   //  Stae pour gérer mes input
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -51,7 +51,7 @@ const SignUp = ({ handleToken }) => {
       console.log(response.data);
 
       // On récupère la clé token de ma requête que l'on stock dans un cookie
-      handleToken(response.data.token);
+      handleTokenAndId(response.data.token, response.data._id);
       // navigate("/");
     } catch (error) {
       console.log(error.response.data);
@@ -83,7 +83,9 @@ const SignUp = ({ handleToken }) => {
           handleChange(event, setUsername);
         }}
       />
-      <label htmlFor="avatar">Choisir son avatar</label>
+      <label htmlFor="avatar" className="avatar">
+        Choisir son avatar
+      </label>
       <input
         style={{ display: "none" }}
         type="file"

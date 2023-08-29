@@ -1,10 +1,12 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const Offer = () => {
+const Offer = ({ token }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+
+  const navigate = useNavigate();
 
   // je récupère mon params id de ma barre de recherche qui me servira pour faire ma requête
   const { id } = useParams();
@@ -62,6 +64,20 @@ const Offer = () => {
               <span>{data.owner.account.username}</span>
             </div>
           </div>
+          <button
+            onClick={() => {
+              token
+                ? navigate("/payment", {
+                    state: {
+                      title: data.product_name,
+                      price: data.product_price,
+                    },
+                  })
+                : navigate("/login");
+            }}
+          >
+            Acheter
+          </button>
         </div>
       </div>
     </section>

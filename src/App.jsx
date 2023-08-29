@@ -9,6 +9,7 @@ import Offer from "./page/Offer";
 import SignUp from "./page/SignUp";
 import Login from "./page/Login";
 import Publish from "./page/Publish";
+import Payment from "./page/Payment";
 
 // Import de mes Components
 import Header from "./components/Header";
@@ -16,6 +17,7 @@ import Footer from "./components/Footer";
 
 const App = () => {
   const [token, setToken] = useState(Cookies.get("token") || null);
+  const [id, setId] = useState(Cookies.get("id") || null);
 
   // state de mes filtres
   const [search, setSearch] = useState("");
@@ -23,13 +25,17 @@ const App = () => {
   const [priceMax, setPriceMax] = useState("");
   const [sort, setSort] = useState("");
 
-  const handleToken = (token) => {
+  const handleTokenAndId = (token, id) => {
     if (token) {
       Cookies.set("token", token, { expires: 15 });
       setToken(token);
+      Cookies.set("id", id, { expires: 15 });
+      setId(id);
     } else {
       Cookies.remove("token");
       setToken(null);
+      Cookies.remove("id");
+      setId(null);
     }
   };
 
@@ -37,7 +43,8 @@ const App = () => {
     <Router>
       <Header
         token={token}
-        handleToken={handleToken}
+        id={id}
+        handleTokenAndId={handleTokenAndId}
         search={search}
         setSearch={setSearch}
         priceMin={priceMin}
@@ -60,10 +67,17 @@ const App = () => {
             />
           }
         />
-        <Route path="/offer/:id" element={<Offer />} />
-        <Route path="/signup" element={<SignUp handleToken={handleToken} />} />
-        <Route path="/login" element={<Login handleToken={handleToken} />} />
+        <Route path="/offer/:id" element={<Offer token={token} />} />
+        <Route
+          path="/signup"
+          element={<SignUp handleTokenAndId={handleTokenAndId} />}
+        />
+        <Route
+          path="/login"
+          element={<Login handleTokenAndId={handleTokenAndId} />}
+        />
         <Route path="/publish" element={<Publish token={token} />} />
+        <Route path="/payment" element={<Payment token={token} />} />
       </Routes>
 
       <Footer />

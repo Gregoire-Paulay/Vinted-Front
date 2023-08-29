@@ -31,18 +31,17 @@ h3 {
 /* ----------------------------------- */
 header {
   background-color: white;
-  padding-bottom: 10px;
   position: sticky;
   z-index: 1;
   top: 0;
   border-bottom: 1px solid black;
+  padding: 6px 0;
 }
 header > div:first-child {
   display: flex;
   justify-content: space-between;
   /* border: 1px solid green; */
   align-items: center;
-  margin-top: 8px;
 }
 
 header img {
@@ -78,11 +77,12 @@ header img {
 
 .sortPrice {
   display: flex;
-  gap: 30px;
-  padding: 12px 0;
+  justify-content: space-between;
+  padding: 12px 20px;
+  /* border: 1px solid green; */
 }
 .sortPrice > div:first-of-type {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   display: flex;
   gap: 10px;
   align-items: center;
@@ -90,6 +90,7 @@ header img {
 .sortPrice > div:nth-of-type(2) {
   display: flex;
   gap: 10px;
+  align-items: center;
 }
 .sign-connect {
   display: flex;
@@ -119,7 +120,7 @@ header > div > button {
 /* ------------ PAGE HOME ------------ */
 /* ----------------------------------- */
 main {
-  background-color: white;
+  background-color: whitesmoke;
   padding-bottom: 50px;
 }
 /* ----------- Section Hero ----------- */
@@ -145,18 +146,22 @@ main {
 
 .allOffer {
   display: flex;
-  border: 3px solid red;
+  /* border: 3px solid red; */
   flex-shrink: 0;
   flex-wrap: wrap;
   gap: 15px;
 }
 
 article {
-  border: 2px solid green;
+  /* border: 2px solid green; */
   width: calc((100% - 60px) / 5);
   margin-bottom: 15px;
   cursor: pointer;
   color: black;
+  padding: 8px;
+  border-radius: 6px;
+  background-color: white;
+  box-shadow: 5px 5px 15px 1px #000000;
 }
 article > div {
   display: flex;
@@ -293,9 +298,25 @@ article p:nth-of-type(3) {
   width: 100px;
   object-fit: cover;
 }
+
+.avatar {
+  border: 1px solid var(--main-color);
+  padding: 20px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--main-color);
+  font-weight: bold;
+}
+.avatar:hover {
+  background-color: var(--main-color);
+  color: white;
+}
 /* ----------------------------------- */
 /* ----------- PAGE PUBLISH ---------- */
 /* ----------------------------------- */
+.publish-page {
+  background-color: whitesmoke;
+}
 .publish {
   border: 1px solid blue;
   display: flex;
@@ -306,21 +327,52 @@ article p:nth-of-type(3) {
   width: 150px;
 }
 .publish input {
-  width: 400px;
+  width: 600px;
 }
 .publish > div {
-  /* border: 1px solid orange; */
+  border: 1px solid orange;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 12px;
 }
 .publish > div > div {
   display: flex;
   gap: 100px;
   border: 1px solid green;
+  justify-content: space-between;
+  align-items: center;
 }
+.publish > div:first-of-type > div {
+  justify-content: center;
+}
+.publish .exchange {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  border: 1px solid pink;
+}
+.publish .exchange > input {
+  width: 30px;
+}
+
 .publish img {
   width: 400px;
+}
+
+.picture {
+  border: 1px solid var(--main-color);
+  padding: 20px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--main-color);
+  font-weight: bold;
+}
+.picture:hover {
+  background-color: var(--main-color);
+  color: white;
 }
 /* ----------------------------------- */
 /* -------------- FOOTER ------------- */

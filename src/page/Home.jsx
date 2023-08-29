@@ -36,7 +36,13 @@ const Home = ({ search, priceMin, priceMax, sort }) => {
 
         <div>
           <h1>Prêts à faire du tri dans vos placards?</h1>
-          <button>Commencer à vendre</button>
+          <button
+            onClick={() => {
+              navigate("/publish");
+            }}
+          >
+            Commencer à vendre
+          </button>
         </div>
       </section>
 

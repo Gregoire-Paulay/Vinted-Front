@@ -10,6 +10,7 @@ const stripePromise = loadStripe(
 
 const Payment = ({ token }) => {
   const location = useLocation();
+  // console.log(location);
   const { title, price } = location.state;
 
   const protectFee = 0.5;

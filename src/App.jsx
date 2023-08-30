@@ -26,9 +26,11 @@ const App = () => {
 
   const handleToken = (token, id) => {
     if (token) {
+      Cookies.set("id", id, { expires: 15 });
       Cookies.set("token", token, { expires: 15 });
       setToken(token);
     } else {
+      Cookies.remove("id");
       Cookies.remove("token");
       setToken(null);
     }

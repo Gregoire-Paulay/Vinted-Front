@@ -51,7 +51,7 @@ const SignUp = ({ handleToken }) => {
       console.log(response.data);
 
       // On récupère la clé token de ma requête que l'on stock dans un cookie
-      handleToken(response.data.token);
+      handleToken(response.data.token, response.data._id);
       // navigate("/");
     } catch (error) {
       console.log(error.response.data);

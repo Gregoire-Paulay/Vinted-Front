@@ -48,9 +48,7 @@ const CheckoutForm = ({ title, price }) => {
           }}
         >
           <CardElement className="card" />
-          <button type="submit" disabled={isPaying}>
-            Payer
-          </button>
+          <input type="submit" disabled={isPaying} value="Payer" />
         </form>
       ) : (
         <span>Paiement effectué</span>

@@ -454,18 +454,16 @@ h4 + p {
   cursor: pointer;
 }
 
-/* .publish .offer-description input {
-} */
 /* ----------------------------------- */
 /* ----------- PAGE PAYMENT ---------- */
 /* ----------------------------------- */
 .payment-page {
   background-color: whitesmoke;
-  border: 3px solid red;
+  /* border: 3px solid red; */
+  padding: 50px 0;
 }
 .payment {
   border: 2px solid black;
-  margin: 50px 0;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -501,7 +499,7 @@ h4 + p {
 }
 
 .payment > section:nth-of-type(2) > div:first-of-type {
-  border: 2px solid orange;
+  /* border: 2px solid orange; */
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 55px;
@@ -519,7 +517,7 @@ h4 + p {
   margin-top: 15px;
   box-shadow: 1px 1px 4px 0px #000000;
 }
-.payment button {
+.payment input {
   width: 100%;
   padding: 10px 0;
   background-color: #23bb6a;
@@ -527,6 +525,7 @@ h4 + p {
   border-radius: 8px;
   color: white;
   font-size: 18px;
+  cursor: pointer;
 }
 .payment span {
   text-align: center;

@@ -21,14 +21,14 @@ const CheckoutForm = ({ title, price }) => {
       const stripeResponse = await stripe.createToken(cardElement, {
         name: Cookies.get("id"),
       });
-      console.log(stripeResponse);
+      // console.log(stripeResponse);
       const stripeToken = stripeResponse.token.id;
 
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/payment",
         { token: stripeToken, title: title, amount: price }
       );
-      console.log(response.data);
+      // console.log(response.data);
       setIsPaying(false);
 
       if (response.data.status === "succeeded") {

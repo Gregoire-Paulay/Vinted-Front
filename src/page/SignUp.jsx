@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SignUp = ({ handleToken }) => {
-  //  Stae pour gérer mes input
+  //  State pour gérer mes input
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,18 +41,12 @@ const SignUp = ({ handleToken }) => {
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/user/signup",
         formData
-        // {
-        //   username: username,
-        //   email: email,
-        //   password: password,
-        //   newsletter: newsletter,
-        // }
       );
-      console.log(response.data);
+      // console.log(response.data);
 
       // On récupère la clé token de ma requête que l'on stock dans un cookie
       handleToken(response.data.token, response.data._id);
-      // navigate("/");
+      navigate("/");
     } catch (error) {
       console.log(error.response.data);
       if (error.response.data.message === "This email already has an account") {

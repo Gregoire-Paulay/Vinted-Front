@@ -16,9 +16,6 @@ const Publish = ({ token }) => {
 
   const navigate = useNavigate();
 
-  // state contenant l'url fourni par cloudinary
-  // const [cloudinaryPicture, setCloudinaryPicture] = useState("");
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -46,7 +43,6 @@ const Publish = ({ token }) => {
         }
       );
       console.log(response.data);
-      // setCloudinaryPicture(response.data.product_image.secure_url);
       navigate("/");
     } catch (error) {
       console.log(error.response);

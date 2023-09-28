@@ -21,7 +21,7 @@ const Offer = ({ token }) => {
         const response = await axios.get(
           `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
         );
-        console.log(response.data);
+        // console.log(response.data);
         const foundOffer = response.data;
         setData(foundOffer);
         setIsLoading(false);

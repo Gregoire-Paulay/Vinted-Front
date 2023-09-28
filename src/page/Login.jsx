@@ -32,11 +32,11 @@ const Login = ({ handleToken }) => {
           password: password,
         }
       );
-      console.log(response.data);
+      // console.log(response.data);
       handleToken(response.data.token, response.data._id);
       navigate("/");
     } catch (error) {
-      console.log(error.response.data);
+      // console.log(error.response.data);
       if (error.response.data.message === "User not found") {
         setErrorMessage("Connexion non autorisé");
       } else if (error.response.data.error === "Unauthorized") {

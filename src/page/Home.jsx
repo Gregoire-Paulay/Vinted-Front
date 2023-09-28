@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+// import Loader
+import ClipLoader from "react-spinners/ClipLoader";
+
 // Import d'image
 import hero from "../assets/hero.jpeg";
 
@@ -28,7 +31,14 @@ const Home = ({ search, priceMin, priceMax, sort }) => {
   }, [search, priceMin, priceMax, sort]);
 
   return isLoading ? (
-    <span>En cours de chargement ... </span>
+    <div className="loader">
+      <ClipLoader
+        color="#0d7580"
+        size={80}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    </div>
   ) : (
     <main>
       <section className="hero">

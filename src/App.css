@@ -35,6 +35,12 @@ h4 {
   font-weight: bold;
   margin-bottom: 8px;
 }
+
+.loader {
+  display: flex;
+  justify-content: center;
+  margin: 350px 0;
+}
 /* ----------------------------------- */
 /* -------------- HEADER ------------- */
 /* ----------------------------------- */

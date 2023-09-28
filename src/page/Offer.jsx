@@ -2,6 +2,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+// import Loader
+import ClipLoader from "react-spinners/ClipLoader";
+
 const Offer = ({ token }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -31,7 +34,14 @@ const Offer = ({ token }) => {
   }, [id]);
 
   return isLoading ? (
-    <p>Chargement en cours</p>
+    <div className="loader">
+      <ClipLoader
+        color="#0d7580"
+        size={80}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    </div>
   ) : (
     <section className="offer">
       <div className="container">

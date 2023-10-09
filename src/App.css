@@ -106,7 +106,48 @@ header img {
   display: flex;
   gap: 10px;
   align-items: center;
+  /* border: 1px solid red; */
+  width: 70%;
 }
+
+/* ------ Checkbox sortPrice ----- */
+.checkbox {
+  margin-right: 25px;
+}
+.checkbox input[name="price"] {
+  display: none;
+}
+.checkbox input[type="checkbox"]:checked + .wrapper {
+  background-color: #2cb1ba;
+}
+.checkbox input[type="checkbox"]:checked + .wrapper .knob {
+  left: 24px;
+}
+.checkbox .wrapper {
+  background-color: #2cb1ba;
+  border-radius: 10px;
+  width: 42px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+}
+.checkbox .knob {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #666;
+  border-radius: 100%;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  left: 0;
+  transition: left 100ms ease-in-out 0s;
+  font-weight: bold;
+}
+
 .sign-connect {
   display: flex;
   gap: 10px;

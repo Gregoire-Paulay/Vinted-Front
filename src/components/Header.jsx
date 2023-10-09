@@ -39,38 +39,31 @@ const Header = ({
           <div className="sortPrice">
             <div>
               <p>Triez par prix :</p>
-              <input
-                type="checkbox"
-                onClick={() => {
-                  if (sort === "price-desc") {
-                    setSort("price-asc");
-                  } else {
-                    setSort("price-desc");
-                  }
-                }}
-              />
+              <div className="checkbox">
+                <input
+                  type="checkbox"
+                  name="price"
+                  onChange={() => {}}
+                  checked={sort}
+                />
+                <div
+                  className="wrapper"
+                  onClick={() => {
+                    setSort(!sort);
+                  }}
+                >
+                  <div className="knob">
+                    <p>{sort ? "⇣" : "⇡"}</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <PriceRange setFetchRangeValues={setFetchRangeValues} />
             <div>
-              {/* <p>Prix entre :</p>
-              <input
-                type="text"
-                placeholder="Prix Minimum"
-                value={priceMin}
-                onChange={(event) => {
-                  setPriceMin(event.target.value);
-                }}
-              />
-              <input
-                type="text"
-                placeholder="Prix Maximum"
-                value={priceMax}
-                onChange={(event) => {
-                  setPriceMax(event.target.value);
-                }}
-              /> */}
+              <p>Prix entre : </p>
+              <PriceRange setFetchRangeValues={setFetchRangeValues} />
             </div>
+            {/* <span className="priceRange">Prix entre : </span> */}
           </div>
         </div>
 

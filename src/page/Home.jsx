@@ -17,7 +17,11 @@ const Home = ({ search, fetchRangeValues, sort }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${fetchRangeValues[0]}&priceMax=${fetchRangeValues[1]}&sort=${sort}`
+          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${
+            fetchRangeValues[0]
+          }&priceMax=${fetchRangeValues[1]}&sort=${
+            sort ? "price-desc" : "price-asc"
+          }`
         );
         const allArticles = response.data;
         // console.log(allArticles);

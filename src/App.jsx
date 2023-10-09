@@ -21,7 +21,7 @@ const App = () => {
   // state de mes filtres
   const [search, setSearch] = useState("");
   const [fetchRangeValues, setFetchRangeValues] = useState([0, 10000]);
-  const [sort, setSort] = useState("");
+  const [sort, setSort] = useState(false);
 
   const handleToken = (token, id) => {
     if (token) {
@@ -55,8 +55,6 @@ const App = () => {
             <Home
               search={search}
               fetchRangeValues={fetchRangeValues}
-              // priceMin={priceMin}
-              // priceMax={priceMax}
               sort={sort}
             />
           }

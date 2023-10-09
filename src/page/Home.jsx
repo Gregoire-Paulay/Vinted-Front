@@ -8,7 +8,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 // Import d'image
 import hero from "../assets/hero.jpeg";
 
-const Home = ({ search, priceMin, priceMax, sort }) => {
+const Home = ({ search, fetchRangeValues, sort }) => {
   const navigate = useNavigate();
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -17,7 +17,7 @@ const Home = ({ search, priceMin, priceMax, sort }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${sort}`
+          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${fetchRangeValues[0]}&priceMax=${fetchRangeValues[1]}&sort=${sort}`
         );
         const allArticles = response.data;
         // console.log(allArticles);
@@ -28,7 +28,7 @@ const Home = ({ search, priceMin, priceMax, sort }) => {
       }
     };
     fetchData();
-  }, [search, priceMin, priceMax, sort]);
+  }, [search, fetchRangeValues, sort]);
 
   return isLoading ? (
     <div className="loader">
@@ -50,6 +50,7 @@ const Home = ({ search, priceMin, priceMax, sort }) => {
             onClick={() => {
               navigate("/publish");
             }}
+            className="hero-button"
           >
             Commencer à vendre
           </button>

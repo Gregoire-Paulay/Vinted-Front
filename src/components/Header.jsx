@@ -1,15 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 
+import PriceRange from "./PriceRange";
+
 const Header = ({
   token,
   handleToken,
   search,
   setSearch,
-  priceMin,
-  setPriceMin,
-  priceMax,
-  setPriceMax,
+  setFetchRangeValues,
   sort,
   setSort,
 }) => {
@@ -51,8 +50,10 @@ const Header = ({
                 }}
               />
             </div>
+
+            <PriceRange setFetchRangeValues={setFetchRangeValues} />
             <div>
-              <p>Prix entre :</p>
+              {/* <p>Prix entre :</p>
               <input
                 type="text"
                 placeholder="Prix Minimum"
@@ -68,7 +69,7 @@ const Header = ({
                 onChange={(event) => {
                   setPriceMax(event.target.value);
                 }}
-              />
+              /> */}
             </div>
           </div>
         </div>

@@ -20,8 +20,7 @@ const App = () => {
 
   // state de mes filtres
   const [search, setSearch] = useState("");
-  const [priceMin, setPriceMin] = useState("");
-  const [priceMax, setPriceMax] = useState("");
+  const [fetchRangeValues, setFetchRangeValues] = useState([0, 10000]);
   const [sort, setSort] = useState("");
 
   const handleToken = (token, id) => {
@@ -43,12 +42,10 @@ const App = () => {
         handleToken={handleToken}
         search={search}
         setSearch={setSearch}
-        priceMin={priceMin}
-        setPriceMin={setPriceMin}
-        priceMax={priceMax}
-        setPriceMax={setPriceMax}
         sort={sort}
         setSort={setSort}
+        setFetchRangeValues={setFetchRangeValues}
+        fetchRangeValues={fetchRangeValues}
       />
 
       <Routes>
@@ -57,8 +54,9 @@ const App = () => {
           element={
             <Home
               search={search}
-              priceMin={priceMin}
-              priceMax={priceMax}
+              fetchRangeValues={fetchRangeValues}
+              // priceMin={priceMin}
+              // priceMax={priceMax}
               sort={sort}
             />
           }

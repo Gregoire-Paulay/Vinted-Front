@@ -56,9 +56,11 @@ const Offer = ({ token }) => {
               const key = keys[0];
 
               return (
-                <div key={index}>
-                  {key} : {detail[key]}
-                </div>
+                key && (
+                  <div key={index}>
+                    {key} : {detail[key]}
+                  </div>
+                )
               );
             })}
           </div>

@@ -117,20 +117,28 @@ header img {
   border: 1px solid var(--main-color);
   border-radius: 6px;
   padding: 6px 20px;
-  cursor: pointer;
 }
+.sign-connect button:hover {
+  cursor: pointer;
+  color: white;
+  background-color: var(--main-color);
+}
+.disconnect {
+  background-color: darkred;
+}
+
 header > div > button {
   background-color: var(--main-color);
   color: white;
   border-radius: 6px;
   padding: 5px 12px;
   border: none;
+}
+header > div > button:hover {
   cursor: pointer;
+  opacity: 0.9;
 }
 
-.disconnect {
-  background-color: darkred;
-}
 /* ----------------------------------- */
 /* ------------ PAGE HOME ------------ */
 /* ----------------------------------- */
@@ -156,6 +164,17 @@ main {
   position: absolute;
   top: 135px;
   left: 10%;
+}
+.hero-button {
+  color: white;
+  background-color: var(--main-color);
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+}
+.hero-button:hover {
+  cursor: pointer;
+  opacity: 0.9;
 }
 
 /* --------- Section allOffer --------- */

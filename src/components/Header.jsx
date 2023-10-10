@@ -67,6 +67,7 @@ const Header = ({
           </div>
         </div>
 
+        <div></div>
         {token ? (
           <button
             className="disconnect"
@@ -96,6 +97,7 @@ const Header = ({
         )}
 
         <button
+          className="publish"
           onClick={() => {
             navigate("/publish");
           }}

@@ -148,6 +148,7 @@ header img {
   font-weight: bold;
 }
 
+/* Connexion - Publish */
 .sign-connect {
   display: flex;
   gap: 10px;
@@ -174,6 +175,7 @@ header > div > button {
   border-radius: 6px;
   padding: 5px 12px;
   border: none;
+  /* margin-top: 5px; */
 }
 header > div > button:hover {
   cursor: pointer;
@@ -612,4 +614,33 @@ footer a {
   text-decoration: none;
   color: black;
   font-weight: bold;
+}
+
+/* ----------------------------------- */
+/* ----------- MEDIA QUERY ----------- */
+/* ----------------------------------- */
+@media (max-width: 1100px) {
+  header {
+    background-color: pink;
+  }
+  header > div:first-child {
+    flex-direction: column;
+  }
+  .sortPrice {
+    padding-top: 20px;
+    padding-bottom: 0px;
+  }
+  .sign-connect {
+    padding-bottom: 5px;
+  }
+  .publish {
+    display: none;
+  }
+}
+
+/* ------ MEDIA 700PX WIDTH ------ */
+@media (max-width: 700px) {
+  header {
+    background-color: coral;
+  }
 }

@@ -13,6 +13,7 @@ const Login = ({ handleToken }) => {
   const navigate = useNavigate();
 
   const handleChange = (event, setChange) => {
+    setErrorMessage("");
     setChange(event.target.value);
   };
 

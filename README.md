@@ -7,7 +7,9 @@
 ## Overview
 
 **A clone of the Vinted Site.** This is the Front-end part of full-stack project, you can find my Back-end for this project <a font-weight="bold" href="https://github.com/Gregoire-Paulay/Vinted-BackEnd">here</a>
-6 pages are avialables: Home (See all offers available), Offer (Details on a specific Offer), Login (Connect with an existing account), SignUp (Create an account), Payment (Pay an Offer), Publish (Publish an Offer, need to be logged).
+<br />
+6 pages are availables: Home (See all offers available), Offer (Details on a specific Offer), Login (Connect with an existing account), SignUp (Create an account), Payment (Pay an Offer), Publish (Publish an Offer, need to be logged).
+<br/>
 On the Hompage you will find differents filters to sort all available Offers and a functional searchbar.
 
 ## Screenshots
@@ -42,6 +44,8 @@ yarn dev
 ```
 
 Once the server is running use : **cmd + click** on the link in your terminal to open it in your browser
+
+<br/>
 
 ## Star, Fork, Clone & Contribute
 
